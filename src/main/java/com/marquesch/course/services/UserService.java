@@ -12,14 +12,14 @@ import com.marquesch.course.repositories.UserRepository;
 public class UserService {
 	
 	@Autowired
-	private UserRepository userRepositoy;
+	private UserRepository userRepository;
 	
 	public List<User> findAll() {
-		return userRepositoy.findAll();
+		return userRepository.findAll();
 	}
 	
 	public User findById(Long id) {
-		return userRepositoy.findById(id).get();
+		return userRepository.findById(id).get();
 	}
 	
 }
