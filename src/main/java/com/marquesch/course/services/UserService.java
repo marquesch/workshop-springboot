@@ -3,11 +3,11 @@ package com.marquesch.course.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.support.Repositories;
 import org.springframework.stereotype.Service;
 
 import com.marquesch.course.entities.User;
 import com.marquesch.course.repositories.UserRepository;
+import com.marquesch.course.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class UserService {
@@ -20,7 +20,7 @@ public class UserService {
 	}
 	
 	public User findById(Long id) {
-		return userRepository.findById(id).get();
+		return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 	
 	public User insert(User obj) {
