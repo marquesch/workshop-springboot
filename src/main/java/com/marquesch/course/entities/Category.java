@@ -17,20 +17,18 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "tb_category")
 public class Category implements Serializable {
-	
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	
+
 	@JsonIgnore
 	@ManyToMany(mappedBy = "categories")
 	private Set<Product> products = new HashSet<>();
-	
+
 	public Category() {
-		
 	}
 
 	public Category(Long id, String name) {
@@ -58,7 +56,7 @@ public class Category implements Serializable {
 	public Set<Product> getProducts() {
 		return products;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -75,5 +73,5 @@ public class Category implements Serializable {
 		Category other = (Category) obj;
 		return Objects.equals(id, other.id);
 	}
-	
+
 }
